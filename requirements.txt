@@ -1,0 +1,5 @@
+numpy
+pyDOE
+scikit-learn
+scipy
+setuptools

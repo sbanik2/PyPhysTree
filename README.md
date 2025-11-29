@@ -1,154 +1,147 @@
-# PyPhysTree: Physics-Informed Tree Search for High-Dimensional Computational Design
+# PyPhysTree: Physics-Informed Tree Search for High-Dimensional Design
 
-[cite_start]**PyPhysTree** is a Python framework implementing the algorithms described in the paper *"Physics-Informed Tree Search for High-Dimensional Computational Design"*[cite: 1, 3]. [cite_start]It extends Monte Carlo Tree Search (MCTS)—traditionally used for discrete decision-making in games—to continuous, high-dimensional scientific optimization tasks where gradients are unavailable or unreliable[cite: 14, 28].
+[](https://www.google.com/search?q=LICENSE)
+[](https://www.python.org/)
+[](https://github.com/sbanik2/PyPhysTree)
 
-[cite_start]This framework integrates population-level decision trees with surrogate-guided directional sampling, reward shaping, and hierarchical switching between global exploration and local exploitation to traverse complex non-convex landscapes[cite: 15].
+**PyPhysTree** is a Python framework for high-dimensional, continuous Global Optimization. It adapts **Monte Carlo Tree Search (MCTS)**—traditionally used in discrete game theory—for scientific discovery tasks in continuous spaces.
 
----
+Unlike standard optimizers, PyPhysTree is designed for **"black-box" design problems** where gradients are unavailable, evaluations are expensive (e.g., DFT, FEM), and the landscape is rugged or multimodal.
 
-## 📥 Data & Results Availability
+-----
 
-The raw result data, optimized structures, logs, and plotting scripts used to generate the figures in the paper are hosted externally.
+## 🚀 Key Innovations
 
-| Dataset | Format | Source |
-| :--- | :--- | :--- |
-| **Paper Results & Figures** | `.zip` | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXX.svg)](https://zenodo.org/record/XXXXXX) |
+This repository implements the algorithms described in *"Physics-Informed Tree Search for High-Dimensional Computational Design"*. It introduces three major deviations from standard MCTS to handle continuous physics problems:
 
-[cite_start]*> **Note:** To reproduce the exact results and figures found in the manuscript (e.g., Figures 3–6), please download the results zip file from Zenodo[cite: 819].*
+1.  **Continuous Action Space:** Replaces discrete moves with **Adaptive Hypersphere Sampling** to navigate unbounded continuous parameters.
+2.  **Directional Learning:** Implements a **Logistic Regression Surrogate** (in `utils.py`) that learns from past rollouts to bias sampling toward promising gradients.
+3.  **Hierarchical Search:**
+      * **Global Batch:** Latin Hypercube sampling ensures broad coverage of diverse basins.
+      * **Local Batch:** Uses adaptive window scaling ($a, b$ parameters) to transition from exploration to high-precision exploitation.
 
----
+-----
 
-## 🔧 Installation
+## 📦 Installation
 
-To set up the environment, clone the repository and install the required dependencies.
+Ensure you have Python 3.8+ installed.
 
 ```bash
-# 1. Clone the repository
-git clone [https://github.com/yourusername/PyPhysTree.git](https://github.com/yourusername/PyPhysTree.git)
+git clone https://github.com/sbanik2/PyPhysTree.git
 cd PyPhysTree
 
-# 2. Install dependencies (numpy, scipy, scikit-learn, pyDOE)
+# Install dependencies and the package
 pip install -r requirements.txt
+pip install .
+```
 
-# 3. (Optional) Install in editable mode if developing
-pip install -e .
-````
+**Key Dependencies:**
 
------
-
-## ⚙️ The Mechanism: Continuous Physics-Informed MCTS
-
-Standard MCTS operates on discrete actions. **PyPhysTree** modifies this for continuous scientific design through three key mechanistic components:
-
-1.  **Continuous Action Sampling**: Instead of discrete branches, we sample child nodes from a continuous design space.
-
-      * [cite\_start]*Hypersphere Sampling*: Samples isotropically around a node[cite: 199].
-      * [cite\_start]*Directional Logistic Surrogate*: Learns a "pseudo-gradient" from the search history to bias sampling toward promising regions[cite: 208, 211].
-
-2.  **Adaptive Window Scaling**: As the tree deepens, the search radius ($r_{max}$) shrinks exponentially. [cite\_start]This forces the algorithm to transition from **Global Exploration** (shallow nodes) to **Local Exploitation** (deep nodes)[cite: 241, 250].
-
-    $$s(depth) = b \cdot \exp(-a \cdot depth^2)$$
-
-3.  **Hierarchical Global-Local Batching**:
-
-      * [cite\_start]**Global Batch**: A population of trees explores the landscape to identify promising basins[cite: 262].
-      * [cite\_start]**Local Batch**: The best candidates spawn "local trees" focused on fine-tuning, with aggressive window shrinking[cite: 268, 384].
-
-[cite\_start]*(See Figure 2 in the paper for the visual schematic of the tree growth and depth scaling [cite: 164])*
+  * `numpy`: Core array manipulation.
+  * `scikit-learn`: Logistic Regression for the directional surrogate.
+  * `pyDOE`: Latin Hypercube Sampling for tree initialization.
+  * `scipy`: Interpolation and scalar minimization.
 
 -----
 
-## 📂 Repository Structure
+## ⚡ Quick Start
 
-The repository is organized into the core package (`lgtree`) and distinct folders for each demonstration case discussed in the paper:
-
-  * [cite\_start]**`lgtree/`**: The core source code[cite: 819]:
-
-      * `MCTS.py`: The tree search logic (Selection, Expansion, Simulation, Backpropagation).
-      * `utils.py`: Contains the `DirectionalLogisticSurrogate` and `Perturbate` classes.
-      * `lgtree.py`: The `MCTSBatch` manager for Global/Local tree populations.
-
-  * **`examples/`**:
-
-      * [cite\_start]**`01_High_Dim_Benchmarks/`**: (Section 3.1) [cite: 392]
-          * Reproduces results for the 23 mathematical benchmark functions (e.g., Rosenbrock, Ackley).
-          * Contains `Benchmark_Demo.ipynb`.
-      * [cite\_start]**`02_Crystal_Structure/`**: (Section 3.2) [cite: 433]
-          * Demonstrations for Au nanoclusters (0D), Silicene polymorphs (2D), and Bulk Silicon (3D).
-      * [cite\_start]**`03_Potential_Fitting/`**: (Section 3.3) [cite: 601]
-          * Workflows for inverse design of Tersoff potential parameters.
-      * [cite\_start]**`04_Continuum_Design/`**: (Section 3.4) [cite: 754]
-          * Engineering design optimization for Welded Beams and Pressure Vessels.
-
------
-
-## 💻 Usage & Demonstration
-
-To run an optimization, you need to define an objective function and bounds. [cite\_start]Below is a minimal example using the high-dimensional **Rosenbrock function** (F5)[cite: 404].
-
-You can run the interactive notebook at `examples/01_High_Dim_Benchmarks/Benchmark_Demo.ipynb` or use the script below:
+PyPhysTree can be used to optimize any scalar objective function. The main entry point is `run_optimisation_mcts`.
 
 ```python
 import numpy as np
-import logging
-from lgtree.lgtree import run_optimisation_mcts
+from lgtree import run_optimisation_mcts
 
-# 1. Define Objective Function
-def rosenbrock(x):
-    # [cite_start]F5 from the paper [cite: 404]
-    x = np.asarray(x)
-    value = np.sum(100.0 * (x[1:] - x[:-1]**2.0)**2.0 + (1 - x[:-1])**2.0)
-    return x, value
+# 1. Define your Objective Function
+# Returns: (relaxed_parameters, score)
+def my_objective(x):
+    # Example: Simple Sphere function (Minimize x^2)
+    score = np.sum(np.array(x)**2)
+    return x, score 
 
-# 2. Setup Configuration
-dim = 30
-lb = np.full(dim, -30.0)
-ub = np.full(dim, 30.0)
+# 2. Set Bounds (e.g., 5 dimensions)
+lb = [-5.0] * 5
+ub = [5.0] * 5
 
-# 3. Configure Logger
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("MCTS_Demo")
-
-# 4. Run Optimization
-# [cite_start]- 'logistic' mode enables the learned directional surrogate [cite: 211]
-# [cite_start]- 'ntrees' sets the population size for the batch [cite: 262]
+# 3. Run Physics-Informed MCTS
 min_score, best_params = run_optimisation_mcts(
-    objfunc=rosenbrock,
-    logger=logger,
-    lb=lb,
-    ub=ub,
-    ntrees=20,
-    top_k=1,
-    niterations_global=10,
-    niterations_local=20,
-    sampling_mode="logistic",
-    verbose=True
+    objfunc=my_objective,
+    logger=None,        # Optional logging
+    lb=lb, ub=ub,       # Search bounds
+    ntrees=5,           # Number of global trees
+    top_k=2,            # Number of trees to keep for local refinement
+    n_total_evals=1000, # Budget
+    sampling_mode="logistic" # Options: "hypersphere" or "logistic"
 )
 
-print(f"Final Score: {min_score}")
+print(f" Optimization Complete. Best Score: {min_score}")
 ```
 
 -----
 
-## 📜 Citation
+## 📂 Repository Structure & Applications
 
-If you use this code or data in your research, please cite the original paper:
+This repository is organized into the core source code and four distinct application examples demonstrated in the paper.
+
+```text
+PyPhysTree/
+├── lgtree/                  <-- Core Source Code
+│   ├── lgtree.py            # Main driver (Global/Local Batch logic)
+│   ├── MCTS.py              # The Continuous MCTS Engine
+│   └── utils.py             # Logistic Surrogate & Perturbation logic
+├── examples/                <-- Paper Reproducibility & Demos
+│   ├── 01_High_Dim_Benchmarks/
+│   ├── 02_Crystal_Structure/
+│   ├── 03_Potential_Fitting/
+│   └── 04_Continuum_Design/
+└── setup.py
+```
+
+### Tutorials & Paper Reproduction
+
+Each folder below contains its own `README` and specific code to reproduce the results from the publication.
+
+| Directory | Application Area | Paper Context |
+| :--- | :--- | :--- |
+| [**01\_High\_Dim\_Benchmarks**](https://www.google.com/search?q=./examples/01_High_Dim_Benchmarks) | **Math Optimization** | Reproduces **Table 1** & **Fig 3**. Benchmarks on F1-F23 (Rastrigin, Ackley, etc.) comparing MCTS vs. PSO/WOA. |
+| [**02\_Crystal\_Structure**](https://www.google.com/search?q=./examples/02_Crystal_Structure) | **Materials Science** | Reproduces **Fig 4**. Includes $Au_{35}$ cluster optimization, Silicene polymorphism search, and Bulk Si lattice optimization. |
+| [**03\_Potential\_Fitting**](https://www.google.com/search?q=./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. |
+| [**04\_Continuum\_Design**](https://www.google.com/search?q=./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
+
+-----
+
+## 📖 Methodology Overview
+
+### 1\. The Tree Policy (`MCTS.py`)
+
+The search balances exploration and exploitation using the Upper Confidence Bound (UCB) applied to continuous regions.
+$$UCB = -best\_reward + C \cdot \sqrt{\frac{\ln(visits_{parent})}{visits_{node}}}$$
+
+### 2\. The Surrogate (`utils.py`)
+
+In `logistic` mode, the algorithm does not sample randomly. It trains a classifier on previous steps:
+
+  * **Input:** Direction vector $d = sign(x_{trial} - x_{center})$
+  * **Label:** Did the objective function improve? (1 or 0)
+  * **Output:** The sampler biases future steps toward directions with high probability of improvement.
+
+### 3\. Adaptive Scaling (`lgtree.py`)
+
+To achieve high precision, the search window $r_{max}$ decays as a function of tree depth and stagnation:
+$$s(depth) = b \cdot \exp(-a \cdot depth^2)$$
+This allows the algorithm to act as a global searcher initially and a local gradient-free optimizer in later stages.
+
+-----
+
+## 📄 Citation
+
+If you utilize **PyPhysTree** or the **Logistic Surrogate MCTS** strategy in your research, please cite:
 
 ```bibtex
 @article{banik2025physics,
   title={Physics-Informed Tree Search for High-Dimensional Computational Design},
   author={Banik, Suvo and Loeffler, Troy D. and Chan, Henry and Manna, Sukriti and Yildiz, Orcun and Peterka, Tom and Sankaranarayanan, Subramanian},
   journal={arXiv preprint},
-  year={2025},
-  note={Argonne National Laboratory}
+  year={2025}
 }
-```
-
------
-
-## 📝 Acknowledgments
-
-[cite\_start]This work was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, Data, Artificial Intelligence, and Machine Learning at DOE Scientific User Facilities program under Award Number 34532 (Digital Twins)[cite: 808].
-
-```
 ```

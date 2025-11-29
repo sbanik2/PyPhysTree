@@ -1,0 +1,348 @@
+F1:
+  name: "Sphere"
+  dim: 30
+  lb: -100.0
+  ub: 100.0
+  eval_cutoff: 30000
+  ntrees: 20
+  alpha: 0.5
+  drop_factor: 0.95
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F2:
+  name: "Schwefel 2.22"
+  dim: 30
+  lb: -10.0
+  ub: 10.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.06
+  drop_factor: 0.95
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F3:
+  name: "Schwefel 1.2"
+  dim: 30
+  lb: -100.0
+  ub: 100.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.01
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F4:
+  name: "Max Value"
+  dim: 30
+  lb: -100.0
+  ub: 100.0
+  eval_cutoff: 30000
+  ntrees: 20
+  alpha: 1.0
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F5:
+  name: "Rosenbrock"
+  dim: 30
+  lb: -30.0
+  ub: 30.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.04
+  drop_factor: 0.8
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 1 for all i"
+
+F6:
+  name: "Step"
+  dim: 30
+  lb: -100.0
+  ub: 100.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.3
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 5
+  global_min_value: 0.0
+  global_min_description: "x_i in [-0.5, 0.5) for all i (e.g., x_i = 0)"
+
+F7:
+  name: "Quartic + Noise"
+  dim: 30
+  lb: -1.28
+  ub: 1.28
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.3
+  drop_factor: 0.98
+  explore_constant_min: 0.1
+  top_k: 5
+  global_min_value: 0.0
+  global_min_description: "Minimum near x_i = 0 for all i; function includes additive uniform noise in [0, 1)"
+
+F8:
+  name: "Schwefel"
+  dim: 30
+  lb: -500.0
+  ub: 500.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.5
+  drop_factor: 0.95
+  explore_constant_min: 0.1
+  top_k: 5
+  global_min_value_per_dim: -418.9829
+  global_min_value: -12569.487   # = -418.9829 * 30
+  global_min_description: "f(x*) = -418.9829 * n at x_i ≈ 420.9687 for all i"
+
+F9:
+  name: "Rastrigin"
+  dim: 30
+  lb: -5.12
+  ub: 5.12
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.3
+  drop_factor: 0.95
+  explore_constant_min: 0.1
+  top_k: 5
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F10:
+  name: "Ackley"
+  dim: 30
+  lb: -32.0
+  ub: 32.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.7
+  drop_factor: 0.85
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F11:
+  name: "Griewank"
+  dim: 30
+  lb: -600.0
+  ub: 600.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.93
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "x_i = 0 for all i"
+
+F12:
+  name: "Penalized 1"
+  dim: 30
+  lb: -50.0
+  ub: 50.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.95
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "Global minimum at x_i = -1 for all i"
+
+F13:
+  name: "Penalized 2"
+  dim: 30
+  lb: -50.0
+  ub: 50.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.96
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.0
+  global_min_description: "Global minimum at x_i = 1 for all i"
+
+F14:
+  name: "Shekel Foxholes"
+  dim: 2
+  lb: -65.0
+  ub: 65.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.98
+  explore_constant_min: 0.1
+  top_k: 10
+  global_min_value: 1.0     # approximate
+  global_min_points:
+    - [-32.0, -32.0]
+  global_min_description: "Approximate global minimum f(x) ≈ 1 at x = [-32, -32]"
+
+F15:
+  name: "Kowalik"
+  dim: 4
+  lb: -5.0
+  ub: 5.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.06
+  drop_factor: 0.97
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.000307   # approximate
+  global_min_points:
+    - [0.1928, 0.1908, 0.1231, 0.1358]
+  global_min_description: "Approximate global minimum f(x) ≈ 0.000307 at x ≈ [0.1928, 0.1908, 0.1231, 0.1358]"
+
+F16:
+  name: "Six-Hump Camel"
+  dim: 2
+  lb: -5.0
+  ub: 5.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.5
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: -1.031628   # approximate
+  global_min_points:
+    - [0.0898, -0.7126]
+    - [-0.0898, 0.7126]
+  global_min_description: "Two global minima at x ≈ [0.0898, -0.7126] and x ≈ [-0.0898, 0.7126], f(x) ≈ -1.0316"
+
+F17:
+  name: "Branin"
+  dim: 2
+  lb: -5.0
+  ub: 5.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.1
+  drop_factor: 0.5
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 0.397887   # approximate
+  global_min_points:
+    - [-3.141593, 12.275]
+    - [3.141593, 2.275]
+    - [9.42478, 2.475]
+  global_min_description: >
+    Three canonical global minima with f(x) ≈ 0.397887 at
+    x ≈ [-π, 12.275], [π, 2.275], [9.42478, 2.475].
+    Note: current implementation bounds are [-5, 5]^2.
+
+F18:
+  name: "Goldstein–Price"
+  dim: 2
+  lb: -2.0
+  ub: 2.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.07
+  drop_factor: 0.8
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: 3.0
+  global_min_points:
+    - [0.0, -1.0]
+  global_min_description: "Global minimum f(x) = 3 at x = [0, -1]"
+
+F19:
+  name: "Hartmann 3D"
+  dim: 3
+  lb: 0.0
+  ub: 1.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.08
+  drop_factor: 0.85
+  explore_constant_min: 0.1
+  top_k: 1
+  global_min_value: -3.86278   # approximate
+  global_min_points:
+    - [0.114614, 0.555649, 0.852547]
+  global_min_description: "Canonical global minimum f(x) ≈ -3.86278 at x ≈ [0.114614, 0.555649, 0.852547]"
+
+F20:
+  name: "Hartmann 6D"
+  dim: 6
+  lb: 0.0
+  ub: 1.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.08
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 10
+  global_min_value: -3.32237   # approximate
+  global_min_points:
+    - [0.20169, 0.15001, 0.47687, 0.27533, 0.31165, 0.65730]
+  global_min_description: "Canonical global minimum f(x) ≈ -3.32237 at x ≈ [0.20169, 0.15001, 0.47687, 0.27533, 0.31165, 0.65730]"
+
+F21:
+  name: "Shekel 5"
+  dim: 4
+  lb: 0.0
+  ub: 10.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.08
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 20
+  global_min_value: -10.1532   # approximate
+  global_min_points:
+    - [4.0, 4.0, 4.0, 4.0]
+  global_min_description: "Global minimum f(x) ≈ -10.1532 at x_i = 4 for i = 1..4"
+
+F22:
+  name: "Shekel 7"
+  dim: 4
+  lb: 0.0
+  ub: 10.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.08
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 20
+  global_min_value: -10.3999   # approximate
+  global_min_points:
+    - [4.0, 4.0, 4.0, 4.0]
+  global_min_description: "Global minimum f(x) ≈ -10.40 at x_i = 4 for i = 1..4"
+
+F23:
+  name: "Shekel 10"
+  dim: 4
+  lb: 0.0
+  ub: 10.0
+  eval_cutoff: 20000
+  ntrees: 20
+  alpha: 0.08
+  drop_factor: 0.9
+  explore_constant_min: 0.1
+  top_k: 20
+  global_min_value: -10.5319   # approximate
+  global_min_points:
+    - [4.0, 4.0, 4.0, 4.0]
+  global_min_description: "Global minimum f(x) ≈ -10.53 at x_i = 4 for i = 1..4"

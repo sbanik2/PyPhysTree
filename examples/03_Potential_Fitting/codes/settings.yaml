@@ -1,0 +1,46 @@
+# --- Physics Settings ---
+element: "Al"
+dimension: 13
+
+# --- File Paths ---
+files:
+  train: "train.xyz"
+  test: "test.xyz"
+  dump: "dumpfile.dat"
+  dump_simplex: "dumpfile_simplex.dat" # <--- Added this line
+  params_energy: "params_best_energy.txt"
+  params_force: "params_best_force.txt"
+  params_balanced: "params_best_balanced.txt"
+
+# --- Physical Bounds (Global) ---
+# Parameter Order: 
+# [gamma, lambda3, c, d, h, n, beta, lambda2, B, R, D, lambda1, A]
+bounds:
+  lb: [0.1, 1.0, 10000.0, 100.0, -0.6, 0.5, 0.1, 1.0, 10.0, 2.0, 0.1, 1.0, 500.0]
+  ub: [2.0, 3.5, 1000000.0, 1000.0, -0.1, 2.5, 1.5, 4.0, 200.0, 5.5, 1.5, 4.0, 5000.0]
+
+# --- MCTS Optimization Settings (Step 1) ---
+mcts:
+  eval_cutoff: 20000
+  subsample_n: 800   
+  nbins: 100        
+  
+  # Hyperparameters from fit.py
+  ntrees: 20
+  top_k: 10          
+  alpha: 0.08        
+  drop_factor: 0.9   
+  a_min: 0.008       
+  a_max: 0.08        
+  b_null: 0.5        
+  explore_min: 0.5   
+
+# --- Filter (Step 2) Settings ---
+filter:
+  pool_size: 50      # Pick top 50 from dump based on objective to re-evaluate
+
+# --- Simplex (Step 3) Settings ---
+simplex:
+  variation_percent: 30
+  strategy: "balanced"  # 'energy', 'force', or 'balanced'
+  max_evals: 1000       # <--- NEW PARAMETER
