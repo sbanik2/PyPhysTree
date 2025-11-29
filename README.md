@@ -1,4 +1,4 @@
-# PyPhysTree: Physics-Informed Tree Search for High-Dimensional Design
+# PyPhysTree: Physics-Informed Tree Search Framework for High-Dimensional Computational Design
 
 [](https://www.google.com/search?q=LICENSE)
 [](https://www.python.org/)
