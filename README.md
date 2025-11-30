@@ -10,7 +10,7 @@ Unlike standard optimizers, PyPhysTree is designed for **"black-box" design prob
 
 -----
 
-## 🚀 Key Innovations
+## Key Implementation
 
 This repository implements the algorithms described in *"Physics-Informed Tree Search for High-Dimensional Computational Design"*. It introduces three major deviations from standard MCTS to handle continuous physics problems:
 
