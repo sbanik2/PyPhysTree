@@ -14,9 +14,9 @@ PyPhysTree is designed for **"black-box" design problems** where gradients are u
 
 This repository implements the algorithms described in *"Physics-Informed Tree Search for High-Dimensional Computational Design"*. It introduces three major deviations from standard MCTS to handle continuous physics problems:
 
-1.  **Continuous Action Space:** 
-2.  **Directional Learning:** 
-3.  **Hierarchical Search:**
+1.  **Continuous Action Space** 
+2.  **Directional Learning** 
+3.  **Hierarchical Search**
 
 
 -----
