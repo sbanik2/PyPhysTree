@@ -1,8 +1,5 @@
 # PyPhysTree: Physics-Informed Tree Search Framework for High-Dimensional Computational Design
 
-[](https://www.google.com/search?q=LICENSE)
-[](https://www.python.org/)
-[](https://github.com/sbanik2/PyPhysTree)
 
 **PyPhysTree** is a Python framework for high-dimensional, continuous Global Optimization. It adapts **Monte Carlo Tree Search (MCTS)**—traditionally used in discrete applications for scientific discovery tasks in continuous spaces.
 
@@ -103,10 +100,10 @@ Each folder below contains its own `README` and specific code to reproduce the r
 
 | Directory | Application Area | Paper Context |
 | :--- | :--- | :--- |
-| [**01\_High\_Dim\_Benchmarks**](https://www.google.com/search?q=./examples/01_High_Dim_Benchmarks) | **Math Optimization** | Reproduces **Table 1** & **Fig 3**. Benchmarks on F1-F23 (Rastrigin, Ackley, etc.) comparing MCTS vs. PSO/WOA. |
-| [**02\_Crystal\_Structure**](https://www.google.com/search?q=./examples/02_Crystal_Structure) | **Materials Science** | Reproduces **Fig 4**. Includes $Au_{35}$ cluster optimization, Silicene polymorphism search, and Bulk Si lattice optimization. (Requires Conda env) |
-| [**03\_Potential\_Fitting**](https://www.google.com/search?q=./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. (Requires Conda env) |
-| [**04\_Continuum\_Design**](https://www.google.com/search?q=./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
+| [**01\_High\_Dim\_Benchmarks**](./examples/01_High_Dim_Benchmarks) | **Math Optimization** | Reproduces **Table 1** & **Fig 3**. Benchmarks on F1-F23 (Rastrigin, Ackley, etc.) comparing MCTS vs. PSO/WOA. |
+| [**02\_Crystal\_Structure**](./examples/02_Crystal_Structure) | **Materials Science** | Reproduces **Fig 4**. Includes $Au_{35}$ cluster optimization, Silicene polymorphism search, and Bulk Si lattice optimization. (Requires Conda env) |
+| [**03\_Potential\_Fitting**](./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. (Requires Conda env) |
+| [**04\_Continuum\_Design**](./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
 
 -----
 
