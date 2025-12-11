@@ -105,28 +105,6 @@ Each folder below contains its own `README` and specific code to reproduce the r
 | [**03\_Potential\_Fitting**](./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. (Requires Conda env) |
 | [**04\_Continuum\_Design**](./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
 
------
-
-## 📖 Methodology Overview
-
-### 1\. The Tree Policy (`MCTS.py`)
-
-The search balances exploration and exploitation using the Upper Confidence Bound (UCB) applied to continuous regions.
-$$UCB = -best\_reward + C \cdot \sqrt{\frac{\ln(visits_{parent})}{visits_{node}}}$$
-
-### 2\. The Surrogate (`utils.py`)
-
-In `logistic` mode, the algorithm does not sample randomly. It trains a classifier on previous steps:
-
-  * **Input:** Direction vector $d = sign(x_{trial} - x_{center})$
-  * **Label:** Did the objective function improve? (1 or 0)
-  * **Output:** The sampler biases future steps toward directions with high probability of improvement.
-
-### 3\. Adaptive Scaling (`lgtree.py`)
-
-To achieve high precision, the search window $r_{max}$ decays as a function of tree depth and stagnation:
-$$s(depth) = b \cdot \exp(-a \cdot depth^2)$$
-This allows the algorithm to act as a global searcher initially and a local gradient-free optimizer in later stages.
 
 -----
 
