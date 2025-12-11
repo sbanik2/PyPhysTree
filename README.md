@@ -24,16 +24,24 @@ This repository implements the algorithms described in *"Physics-Informed Tree S
 
 ## 📦 Installation
 
-Ensure you have Python 3.8+ installed.
+Ensure you have **Python 3.10+** installed.
+
+While the core logic runs with standard pip packages, the **Crystal Structure (02)** and **Potential Fitting (03)** examples require **LAMMPS** and **MPI**. We strongly recommend using **Anaconda/Miniconda** to manage these non-Python dependencies.
 
 ```bash
-git clone https://github.com/sbanik2/PyPhysTree.git
+git clone [https://github.com/sbanik2/PyPhysTree.git](https://github.com/sbanik2/PyPhysTree.git)
 cd PyPhysTree
 
-# Install dependencies and the package
+# 1. Create and Activate Conda Environment
+# Note: 'lammps' and 'openmpi' are required for the Crystal Structure 
+# and Potential Fitting examples.
+conda create -n lmp -c conda-forge python=3.12 lammps "openmpi<5.0"
+conda activate lmp
+
+# 2. Install Python dependencies and the package
 pip install -r requirements.txt
 pip install .
-```
+````
 
 **Key Dependencies:**
 
@@ -41,6 +49,7 @@ pip install .
   * `scikit-learn`: Logistic Regression for the directional surrogate.
   * `pyDOE`: Latin Hypercube Sampling for tree initialization.
   * `scipy`: Interpolation and scalar minimization.
+  * `lammps` (via Conda): Required for materials science examples.
 
 -----
 
@@ -103,10 +112,10 @@ Each folder below contains its own `README` and specific code to reproduce the r
 
 | Directory | Application Area | Paper Context |
 | :--- | :--- | :--- |
-| [**01\_High\_Dim\_Benchmarks**](./examples/01_High_Dim_Benchmarks) | **Math Optimization** | Reproduces **Table 1** & **Fig 3**. Benchmarks on F1-F23 (Rastrigin, Ackley, etc.) comparing MCTS vs. PSO/WOA. |
-| [**02\_Crystal\_Structure**](./examples/02_Crystal_Structure) | **Materials Science** | Reproduces **Fig 4**. Includes $Au_{35}$ cluster optimization, Silicene polymorphism search, and Bulk Si lattice optimization. |
-| [**03\_Potential\_Fitting**](./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. |
-| [**04\_Continuum\_Design**](./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
+| [**01\_High\_Dim\_Benchmarks**](https://www.google.com/search?q=./examples/01_High_Dim_Benchmarks) | **Math Optimization** | Reproduces **Table 1** & **Fig 3**. Benchmarks on F1-F23 (Rastrigin, Ackley, etc.) comparing MCTS vs. PSO/WOA. |
+| [**02\_Crystal\_Structure**](https://www.google.com/search?q=./examples/02_Crystal_Structure) | **Materials Science** | Reproduces **Fig 4**. Includes $Au_{35}$ cluster optimization, Silicene polymorphism search, and Bulk Si lattice optimization. (Requires Conda env) |
+| [**03\_Potential\_Fitting**](https://www.google.com/search?q=./examples/03_Potential_Fitting) | **Inverse Design** | Reproduces **Fig 5**. Fitting Tersoff potential parameters for Aluminum nanoclusters against DFT data. (Requires Conda env) |
+| [**04\_Continuum\_Design**](https://www.google.com/search?q=./examples/04_Continuum_Design) | **Engineering** | Reproduces **Fig 6**. Constrained design of Pressure Vessels and Welded Beams. |
 
 -----
 
@@ -144,4 +153,7 @@ If you utilize **PyPhysTree** or the **Logistic Surrogate MCTS** strategy in you
   journal={arXiv preprint},
   year={2025}
 }
+```
+
+```
 ```
