@@ -4,9 +4,9 @@
 [](https://www.python.org/)
 [](https://github.com/sbanik2/PyPhysTree)
 
-**PyPhysTree** is a Python framework for high-dimensional, continuous Global Optimization. It adapts **Monte Carlo Tree Search (MCTS)**—traditionally used in discrete game theory—for scientific discovery tasks in continuous spaces.
+**PyPhysTree** is a Python framework for high-dimensional, continuous Global Optimization. It adapts **Monte Carlo Tree Search (MCTS)**—traditionally used in discrete applications for scientific discovery tasks in continuous spaces.
 
-Unlike standard optimizers, PyPhysTree is designed for **"black-box" design problems** where gradients are unavailable, evaluations are expensive (e.g., DFT, FEM), and the landscape is rugged or multimodal.
+PyPhysTree is designed for **"black-box" design problems** where gradients are unavailable, evaluations are expensive (e.g., DFT, FEM), and the landscape is rugged or multimodal.
 
 -----
 
@@ -14,17 +14,16 @@ Unlike standard optimizers, PyPhysTree is designed for **"black-box" design prob
 
 This repository implements the algorithms described in *"Physics-Informed Tree Search for High-Dimensional Computational Design"*. It introduces three major deviations from standard MCTS to handle continuous physics problems:
 
-1.  **Continuous Action Space:** Replaces discrete moves with **Adaptive Hypersphere Sampling** to navigate unbounded continuous parameters.
-2.  **Directional Learning:** Implements a **Logistic Regression Surrogate** (in `utils.py`) that learns from past rollouts to bias sampling toward promising gradients.
+1.  **Continuous Action Space:** 
+2.  **Directional Learning:** 
 3.  **Hierarchical Search:**
-      * **Global Batch:** Latin Hypercube sampling ensures broad coverage of diverse basins.
-      * **Local Batch:** Uses adaptive window scaling ($a, b$ parameters) to transition from exploration to high-precision exploitation.
+
 
 -----
 
 ## 📦 Installation
 
-Ensure you have **Python 3.10+** installed.
+The code is tested  with **Python 3.10+** or above.
 
 While the core logic runs with standard pip packages, the **Crystal Structure (02)** and **Potential Fitting (03)** examples require **LAMMPS** and **MPI**. We strongly recommend using **Anaconda/Miniconda** to manage these non-Python dependencies.
 
@@ -34,7 +33,7 @@ cd PyPhysTree
 
 # 1. Create and Activate Conda Environment
 # Note: 'lammps' and 'openmpi' are required for the Crystal Structure 
-# and Potential Fitting examples.
+# and Potential Fitting.
 conda create -n lmp -c conda-forge python=3.12 lammps "openmpi<5.0"
 conda activate lmp
 
@@ -42,14 +41,6 @@ conda activate lmp
 pip install -r requirements.txt
 pip install .
 ````
-
-**Key Dependencies:**
-
-  * `numpy`: Core array manipulation.
-  * `scikit-learn`: Logistic Regression for the directional surrogate.
-  * `pyDOE`: Latin Hypercube Sampling for tree initialization.
-  * `scipy`: Interpolation and scalar minimization.
-  * `lammps` (via Conda): Required for materials science examples.
 
 -----
 
