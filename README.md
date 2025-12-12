@@ -25,14 +25,15 @@ The code is tested  with **Python 3.10+** or above.
 While the core logic runs with standard pip packages, the **Crystal Structure (02)** and **Potential Fitting (03)** examples require **LAMMPS** and **MPI**. We strongly recommend using **Anaconda/Miniconda** to manage these non-Python dependencies.
 
 ```bash
-git clone https://github.com/sbanik2/PyPhysTree.git
-cd PyPhysTree
 
 # 1. Create and Activate Conda Environment
 # Note: 'lammps' and 'openmpi' are required for the Crystal Structure 
 # and Potential Fitting.
 conda create -n lmp -c conda-forge python=3.12 lammps "openmpi<5.0"
 conda activate lmp
+
+git clone https://github.com/sbanik2/PyPhysTree.git
+cd PyPhysTree
 
 # 2. Install Python dependencies and the package
 pip install -r requirements.txt
