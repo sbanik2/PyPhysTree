@@ -1,5 +1,11 @@
-numpy
-pyDOE
-scikit-learn
-scipy
-setuptools
+ase>=3.26.0
+lammps>=2024.8.29
+matplotlib>=3.7.0
+numpy<2.0.0
+pandas>=2.0.3
+pyDOE>=0.3.8
+pymatgen>=2025.10.7
+PyYAML>=6.0.3
+scikit-learn>=1.5.0
+scipy>=1.10.0
+setuptools>=80.9.0
