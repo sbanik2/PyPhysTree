@@ -49,6 +49,15 @@ PyPhysTree can be used to optimize any scalar objective function. The main entry
 ```python
 import numpy as np
 from lgtree import run_optimisation_mcts
+import logging
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 
 # 1. Define your Objective Function
 # Returns: (relaxed_parameters, score)
@@ -64,7 +73,7 @@ ub = [5.0] * 5
 # 3. Run Physics-Informed MCTS
 min_score, best_params = run_optimisation_mcts(
     objfunc=my_objective,
-    logger=None,        # Optional logging
+    logger=logger,      # Logging
     lb=lb, ub=ub,       # Search bounds
     ntrees=5,           # Number of global trees
     top_k=2,            # Number of trees to keep for local refinement

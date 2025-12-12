@@ -11,7 +11,7 @@ class MCTSBatch:
         self,
         objfunc: Any,
         config_dict: Dict[int, Dict[str, Any]],
-        logger: logging.Logger,
+        logger, 
         nplayouts: int = 5,
         explore_constant_max: float = 1e20,
         explore_constant_min: float = 1e-20,
