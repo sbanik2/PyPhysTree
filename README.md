@@ -87,7 +87,7 @@ PyPhysTree/
 │   ├── lgtree.py            # Main driver (Global/Local Batch logic)
 │   ├── MCTS.py              # The Continuous MCTS Engine
 │   └── utils.py             # Logistic Surrogate & Perturbation logic
-├── examples/                <-- Paper Reproducibility & Demos
+├── examples/                <-- Paper Demos
 │   ├── 01_High_Dim_Benchmarks/
 │   ├── 02_Crystal_Structure/
 │   ├── 03_Potential_Fitting/
