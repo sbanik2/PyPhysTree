@@ -25,7 +25,7 @@ The code is tested  with **Python 3.10+** or above.
 While the core logic runs with standard pip packages, the **Crystal Structure (02)** and **Potential Fitting (03)** examples require **LAMMPS** and **MPI**. We strongly recommend using **Anaconda/Miniconda** to manage these non-Python dependencies.
 
 ```bash
-git clone [https://github.com/sbanik2/PyPhysTree.git](https://github.com/sbanik2/PyPhysTree.git)
+git clone https://github.com/sbanik2/PyPhysTree.git
 cd PyPhysTree
 
 # 1. Create and Activate Conda Environment
