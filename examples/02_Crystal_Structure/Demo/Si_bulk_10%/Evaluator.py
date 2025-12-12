@@ -17,6 +17,7 @@ from pymatgen.io.lammps.data import LammpsData
 
 from Perturb import gel_latt_coords
 
+import warnings
 
 
 # ------------------- LAMMPS Evaluator Class -------------------
