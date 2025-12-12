@@ -29,8 +29,8 @@ While the core logic runs with standard pip packages, the **Crystal Structure (0
 # 1. Create and Activate Conda Environment
 # Note: 'lammps' and 'openmpi' are required for the Crystal Structure 
 # and Potential Fitting.
-conda create -n lmp -c conda-forge python=3.12 lammps "openmpi<5.0"
-conda activate lmp
+conda create -n PyPhysTree -c conda-forge python=3.12 lammps "openmpi<5.0"
+conda activate PyPhysTree
 
 git clone https://github.com/sbanik2/PyPhysTree.git
 cd PyPhysTree
